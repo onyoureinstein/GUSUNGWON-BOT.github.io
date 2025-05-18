@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>연화첩(戀火帖)</title>
+<title>연화첩(戀火帖) - 고종과 대화</title>
 <link rel="icon" type="image/x-icon" href="assets/가정고.ico" />
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- Custom CSS -->
 <style>
 @font-face {
   font-family: 'GapyeongHanseokbongB';
@@ -40,7 +39,7 @@ body {
 .text01 {
   font-family: 'GapyeongHanseokbongB', serif;
   font-size: 62px;
-  min-height: 90px; /* 타이핑 애니메이션 시 높이 유지 */
+  min-height: 90px; 
   margin-bottom: 0;
 }
 
@@ -48,7 +47,7 @@ body {
   font-family: 'GapyeongHanseokbongL', serif;
   font-size: 25px;
   margin-top: 20px;
-  margin-bottom: 60px; /* 텍스트와 프로필 사이 여유 */
+  margin-bottom: 60px; 
 }
 
 .text03 {
@@ -66,7 +65,14 @@ body {
   flex-grow: 1;
 }
 
-/* 데이팅앱 카드 스타일 */
+.profiles-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  gap: 20px;
+}
+
 .profile-card {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
@@ -108,25 +114,14 @@ body {
   background-color: #ff1c1c;
 }
 
-/* 카드 그리드 */
-.profiles-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 40px;
-  gap: 20px;
-}
-
-/* 채팅 영역 */
 .chat-section {
   text-align: center;
-  margin-top: 40px; /* 프로필과 충분한 간격 */
+  margin-top: 40px;
   margin-bottom: 40px;
   position: relative;
   transition: box-shadow 1s ease-in-out;
 }
 
-/* 고종 프로필일 때 붉은 빛 애니메이션 효과 */
 .chat-section.glow {
   box-shadow: 0 0 30px 10px rgba(255, 60, 60, 0.7);
   animation: pulseRed 2s infinite alternate;
@@ -141,50 +136,64 @@ body {
   }
 }
 
-/* 타자효과 텍스트 스타일 */
 #chatTitle {
   font-family: 'GapyeongHanseokbongB', serif;
   font-size: 28px;
   margin-bottom: 10px;
 }
+
+/* 타자효과 */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 12ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid white;
+  width: 12ch;
+  animation:
+    typing 3s steps(12),
+    blink 1s infinite step-end;
+  font-family: 'GapyeongHanseokbongB', serif;
+  font-size: 62px;
+  min-height: 90px;
+  margin-bottom: 0;
+}
 </style>
 </head>
 
 <body>
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand text05" href="#">세종대학교 문화원형 프로젝트</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">고종 프로젝트</a>
-        </li>
+        <li class="nav-item"><a class="nav-link active" href="#">고종 프로젝트</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Main Content -->
 <div class="content-wrapper container">
-  <h1 class="text01" id="titleTyping"></h1>
+  <!-- 연화첩 타이핑 애니메이션 -->
+  <h1 class="typing-text" id="titleTyping">연화첩(戀火帖)</h1>
+  
   <h2 class="text02" id="subtitle">
     연심이 아른거리어, 오늘도 이렇듯 인연의 실마리를 짓노라.
   </h2>
   <p class="text03">Made by 스토리텔링 1조</p>
 
-  <!-- 프로필 선택 영역 -->
-  <section class="profiles-container mt-5" id="profiles"></section>
+  <section class="profiles-container" id="profiles"></section>
 
-  <!-- 대화 타이틀 -->
   <div class="chat-section" id="chatSection">
     <h3 id="chatTitle">프로필을 선택해주세요</h3>
     <iframe
@@ -198,12 +207,10 @@ body {
   </div>
 </div>
 
-<!-- Footer -->
 <footer class="text-center">
   <p>version 2025.05.17</p>
 </footer>
 
-<!-- JS Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   const profiles = [
@@ -215,6 +222,7 @@ body {
       bio:
         "대한제국의 마지막 황제, 격변의 시대에도 강인함과 책임감을 지닌 리더.",
       img: "https://t1.daumcdn.net/news/201809/18/mydaily/20180918164415661hyfa.jpg",
+      dialogflowSrc: "https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463"
     },
     {
       id: 2,
@@ -224,6 +232,7 @@ body {
       bio:
         "미국 해병대 출신, 과거의 상처를 딛고 진심으로 사람과 인연을 소중히 여기는 사람입니다.",
       img: "https://www.ntdtv.kr/assets/uploads/2022/12/e92a60aca492944db51f1a54ec1c6337.jpeg",
+      dialogflowSrc: "" // 추후 다른 dialogflow 링크 넣을 수 있음
     },
     {
       id: 3,
@@ -232,6 +241,7 @@ body {
       location: "조선",
       bio: "강인한 의지와 뜨거운 애국심으로 조국을 위해 목숨을 바치는 인물",
       img: "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/06/29/01c3955a-d081-4aff-9afe-6000f4d7a6da.jpg",
+      dialogflowSrc: "" // 추후 다른 dialogflow 링크 넣을 수 있음
     },
   ];
 
@@ -239,18 +249,8 @@ body {
   const chatTitle = document.getElementById("chatTitle");
   const dialogflowIframe = document.getElementById("dialogflowIframe");
   const chatSection = document.getElementById("chatSection");
-  const titleTyping = document.getElementById("titleTyping");
 
   let currentChatProfileId = null;
-
-  // 타자 효과 함수 (Promise 기반)
-  async function typeEffect(element, text, speed = 80) {
-    element.textContent = "";
-    for (let i = 0; i < text.length; i++) {
-      element.textContent += text[i];
-      await new Promise((resolve) => setTimeout(resolve, speed));
-    }
-  }
 
   // 프로필 카드 생성 함수
   function createProfileCard(profile) {
@@ -265,7 +265,6 @@ body {
       <button class="btn btn-like">좋아요 ❤️</button>
     `;
 
-    // 카드 클릭시 대화 프로필 변경
     card.addEventListener("click", () => {
       if (currentChatProfileId !== profile.id) {
         currentChatProfileId = profile.id;
@@ -273,7 +272,6 @@ body {
       }
     });
 
-    // 좋아요 버튼 클릭
     card.querySelector(".btn-like").addEventListener("click", (e) => {
       e.stopPropagation();
       alert(`${profile.name}님과 매칭되었습니다! 🎉`);
@@ -282,43 +280,37 @@ body {
     return card;
   }
 
-  // 프로필 선택시 업데이트
-  async function updateSelectedProfile() {
-    // 모든 카드 선택 해제
+  // 선택된 프로필에 따른 업데이트
+  function updateSelectedProfile() {
+    // 카드 선택 해제
     document.querySelectorAll(".profile-card").forEach((card) => {
       card.classList.remove("selected");
     });
 
-    // 선택한 카드에 selected 클래스 추가
-    const selectedCard = document.querySelector(
-      `.profile-card[data-id="${currentChatProfileId}"]`
-    );
+    // 선택 카드에 selected 클래스 추가
+    const selectedCard = document.querySelector(`.profile-card[data-id="${currentChatProfileId}"]`);
     if (selectedCard) selectedCard.classList.add("selected");
 
     const profile = profiles.find((p) => p.id === currentChatProfileId);
 
-    // 타자효과로 대화 제목 변경
-    await typeEffect(chatTitle, `${profile.name}과 대화 중`);
+    chatTitle.textContent = `${profile.name}과 대화 중`;
 
-    // 고종 프로필일 때만 붉은 빛 애니메이션 추가
+    // 고종일 때 붉은 불빛 애니메이션
     chatSection.classList.remove("glow");
     if (profile.name === "고종") {
       chatSection.classList.add("glow");
     }
 
-    // iframe 페이드 아웃 후 주소 변경, 다시 페이드 인
+    // iframe 페이드 아웃 후 src 변경, 페이드 인
     dialogflowIframe.style.opacity = 0;
     setTimeout(() => {
-      // 여기에 실제 Dialogflow 에이전트 링크 넣기
-      dialogflowIframe.src =
-        "https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463";
-      dialogflowIframe.style.opacity = 1;
+      dialogflowIframe.src = profile.dialogflowSrc || "";
+      dialogflowIframe.style.opacity = profile.dialogflowSrc ? 1 : 0;
     }, 300);
   }
 
-  // 초기화 함수
-  async function init() {
-    // 프로필 카드 렌더링
+  // 초기화
+  function init() {
     profiles.forEach((profile) => {
       profilesContainer.appendChild(createProfileCard(profile));
     });
@@ -326,12 +318,8 @@ body {
     chatTitle.textContent = "프로필을 선택해주세요";
     dialogflowIframe.src = "";
     dialogflowIframe.style.opacity = 0;
-
-    // 시작 시 '연화첩' 텍스트 타자 효과 실행
-    await typeEffect(titleTyping, "연화첩(戀火帖)", 150);
   }
 
-  // 시작
   init();
 </script>
 </body>
