@@ -45,20 +45,28 @@
 
   /* 프로필 선택 영역 */
   #profile-section {
-    background: linear-gradient(135deg, #ff4d4d, #ff9999);
-    padding: 40px 20px 60px 20px;
+    background: url('background.jpg') no-repeat center center / cover;
+    padding: 40px 20px 80px 20px;
     text-align: center;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
   }
   #profile-section h1 {
     font-family: 'GapyeongHanseokbongB', serif;
     font-size: 48px;
     margin-bottom: 10px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
   }
   #profile-section p.subtitle {
     font-family: 'GapyeongHanseokbongL', serif;
     font-size: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
+  }
+  #profile-section p.author {
+    font-family: 'GapyeongHanseokbongL', serif;
+    font-size: 14px;
+    margin-top: 0;
+    color: #ffd6d6cc;
+    font-style: italic;
   }
 
   .profiles-container {
@@ -67,7 +75,7 @@
     flex-wrap: wrap;
     gap: 20px;
     max-width: 960px;
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
   }
 
   .profile-card {
@@ -189,6 +197,7 @@
 <section id="profile-section">
   <h1>연화첩(戀火帖)</h1>
   <p class="subtitle">마음이 통한 인연을 찾아보세요.</p>
+  <p class="author">made by 강성은</p>
   <div class="profiles-container" id="profiles">
     <!-- JS 프로필 카드 삽입 -->
   </div>
