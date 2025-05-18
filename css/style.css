@@ -1,17 +1,17 @@
-/* 폰트 임포트 (로컬에서 불러올 경우 @font-face 사용) */
 @font-face {
   font-family: 'GapyeongHanseokbongB';
-  src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('ttf');
+  src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype'); 
   font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'GapyeongHanseokbongL';
-  src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('ttf');
+  src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
   font-weight: normal;
+  font-style: normal;
 }
 
-/* 전체 P 태그 글자 크기 설정 */
 p {
   font-size: 50px;
 }
