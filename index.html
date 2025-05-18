@@ -1,246 +1,220 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>연화첩(戀火帖)</title>
-  <link rel="icon" type="image/x-icon" href="assets/가정고.ico" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연화첩(戀火帖)</title>
+<link rel="icon" type="image/x-icon" href="assets/가정고.ico" />
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link href="css/styles.css" rel="stylesheet" />
+<!-- Custom CSS -->
+<link href="css/styles.css" rel="stylesheet" />
 
-  <style>
-    @font-face {
-      font-family: 'GapyeongHanseokbongB';
-      src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype'); 
-      font-weight: bold;
-      font-style: normal;
-   }
+<!-- Custom Fonts -->
+<style>
+@font-face {
+  font-family: 'GapyeongHanseokbongB';
+  src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype'); 
+  font-weight: bold;
+  font-style: normal;
+}
 
-    @font-face {
-      font-family: 'GapyeongHanseokbongL';
-      src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-   }
+@font-face {
+  font-family: 'GapyeongHanseokbongL';
+  src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-image: url('assets/background.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      color: white;
-      text-align: center;
-      font-family: 'GapyeongHanseokbongL', serif;
-      min-height: 100vh;
-    }
+body {
+  background-image: url('assets/background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+  color: white;
+  text-align: center;
+  display: block; /* 기존 flex 제거 */
+}
 
-    .text01 {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 62px;
-    }
+.text01 {
+  font-family: 'GapyeongHanseokbongB', serif;
+  font-size: 62px;
+}
 
-    .text02 {
-      font-family: 'GapyeongHanseokbongL', serif;
-      font-size: 25px;
-    }
+.text02 {
+  font-family: 'GapyeongHanseokbongL', serif;
+  font-size: 25px;
+}
 
-    .text03 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 13px;
-    }
+.text03 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+}
 
-    .text05 {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 22px;
-    }
+.text05 {
+  font-family: 'GapyeongHanseokbongB', serif;
+  font-size: 22px;
+}
 
-    nav {
-      background-color: rgba(0,0,0,0.7) !important;
-    }
+.content-wrapper {
+  margin-top: 150px;
+  flex-grow: 1;
+}
 
-    .content-wrapper {
-      margin-top: 120px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px;
-    }
+footer {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 10px 0;
+}
 
-    /* 프로필 카드 스타일 */
-    .profile-card {
-      background: rgba(0,0,0,0.6);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 15px;
-      color: white;
-      max-width: 280px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      text-align: left;
-      flex-shrink: 0;
-    }
+/* 데이팅앱 카드 스타일 */
+.profile-card {
+  background: rgba(0,0,0,0.5);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px;
+  color: white;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
 
-    .profile-img {
-      width: 100%;
-      border-radius: 15px;
-      object-fit: cover;
-      height: 250px;
-      margin-bottom: 15px;
-    }
+.profile-img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  height: 250px;
+  margin-bottom: 15px;
+}
 
-    .btn-like {
-      background-color: #ff5c5c;
-      border: none;
-      width: 100%;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.btn-like {
+  background-color: #ff5c5c;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    .btn-like:hover {
-      background-color: #ff1c1c;
-    }
+.btn-like:hover {
+  background-color: #ff1c1c;
+}
 
-    /* 카드 그리드 */
-    .profiles-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-bottom: 10px;
-    }
-
-    /* 매칭 기록 박스 */
-    #match-history {
-      margin-top: 30px;
-      background: rgba(0,0,0,0.4);
-      padding: 15px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-      font-size: 14px;
-      min-height: 60px;
-    }
-
-    /* 채팅봇 영역 숨김 */
-    #chatbot-section {
-      display: none;
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    /* 탭 버튼 스타일 */
-    .tab-buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .tab-buttons button {
-      font-weight: bold;
-      font-size: 16px;
-      padding: 10px 25px;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      background-color: rgba(255,255,255,0.2);
-      color: white;
-      transition: background-color 0.3s;
-    }
-
-    .tab-buttons button.active,
-    .tab-buttons button:hover {
-      background-color: #ff5c5c;
-      color: white;
-    }
-
-  </style>
+/* 카드 그리드 */
+.profiles-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  gap: 20px;
+}
+</style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand text05" href="#">세종대학교 문화원형 프로젝트</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">고종 프로젝트</a>
-          </li>
-        </ul>
-      </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand text05" href="#">세종대학교 문화원형 프로젝트</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">고종 프로젝트</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Main Content -->
-  <div class="content-wrapper">
-    <h1 class="text01">연화첩(戀火帖)</h1>
-    <h2 class="text02">"연심이 아른거리어, 오늘도 이렇듯 인연의 실마리를 짓노라."</h2>
-    <p class="text03">Made by 권오선 강성은 김예림 문서영 정선용</p>
+<!-- Main Content -->
+<div class="content-wrapper container">
+  <h1 class="text01">연화첩(戀火帖)</h1>
+  <h2 class="text02">"연심이 아른거리어, 오늘도 이렇듯 인연의 실마리를 짓노라."</h2>
+  <p class="text03">Made by 스토리텔링 1조</p>
 
-    <!-- 탭 버튼 -->
-    <div class="tab-buttons">
-      <button id="dating-tab" class="active" onclick="showSection('dating')">데이팅</button>
-      <button id="chatbot-tab" onclick="showSection('chatbot')">채팅봇</button>
-    </div>
-
-    <!-- 데이팅 섹션 -->
-    <section id="dating-section">
-      <div class="profiles-container" id="profiles">
-        <!-- JS가 프로필 카드 생성 -->
-      </div>
-      <div id="match-history">
-        <strong>매칭 기록:</strong>
-        <ul id="match-list" style="margin-top:8px; padding-left: 20px;"></ul>
-      </div>
-    </section>
-
-    <!-- 채팅봇 섹션 -->
-    <section id="chatbot-section">
-      <iframe width="500" height="580" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463"></iframe>
-    </section>
+  <!-- Dialogflow Bot -->
+  <div class="d-flex justify-content-center mt-5">
+    <iframe width="500" height="580" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463"></iframe>
   </div>
 
-  <!-- Footer -->
-  <footer class="text-center">
-    <p>version 2025.05.17</p>
-  </footer>
+  <!-- 데이팅앱 프로필 카드 섹션 -->
+  <section class="profiles-container mt-5" id="profiles">
+    <!-- 카드가 JS로 채워집니다 -->
+  </section>
+</div>
 
-  <!-- JS Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const profiles = [
-      {
-        id: 1,
-        name: '민지',
-        age: 28,
-        location: '서울',
-        bio: '음악과 여행을 사랑하는 낭만가',
-        img: 'https://randomuser.me/api/portraits/women/65.jpg'
-      },
-      {
-        id: 2,
-        name: '준호',
-        age: 30,
-        location: '부산',
-        bio: '책과 카페를 좋아하는 차분한 남자',
-        img: 'https://randomuser.me/api/portraits/men/43.jpg'
-      },
-      {
-        id: 3,
-        name: '수아',
-        age: 26,
-        location: '대구',
-        bio: '요리와 운동을 즐기는 긍정적인 사람',
-        img: 'https://randomuser.me
+<!-- Footer -->
+<footer class="text-center">
+  <p>version 2025.05.17</p>
+</footer>
+
+<!-- JS Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// 프로필 데이터 (고종, 유진초이, 구동매 3명만)
+const profiles = [
+  {
+    id: 1,
+    name: '고종',
+    age: 45,
+    location: '조선',
+    bio: '대한제국의 마지막 황제, 격변의 시대에도 강인함과 책임감을 지닌 리더.',
+    img: 'https://t1.daumcdn.net/news/201809/18/mydaily/20180918164415661hyfa.jpg'
+  },
+  {
+    id: 2,
+    name: '유진초이',
+    age: 30,
+    location: '조선',
+    bio: '미국 해병대 출신, 과거의 상처를 딛고 진심으로 사람과 인연을 소중히 여기는 사람입니다.',
+    img: 'https://www.ntdtv.kr/assets/uploads/2022/12/e92a60aca492944db51f1a54ec1c6337.jpeg'
+  },
+  {
+    id: 3,
+    name: '구동매',
+    age: 26,
+    location: '조선',
+    bio: '강인한 의지와 뜨거운 애국심으로 조국을 위해 목숨을 바치는 인물',
+    img: 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/06/29/01c3955a-d081-4aff-9afe-6000f4d7a6da.jpg'
+  }
+];
+
+const profilesContainer = document.getElementById('profiles');
+
+// 프로필 카드 생성 함수
+function createProfileCard(profile) {
+  const card = document.createElement('div');
+  card.className = 'profile-card col-md-3';
+
+  card.innerHTML = `
+    <img src="${profile.img}" alt="${profile.name}" class="profile-img" />
+    <h4>${profile.name}, ${profile.age}</h4>
+    <p><strong>지역:</strong> ${profile.location}</p>
+    <p>${profile.bio}</p>
+    <button class="btn btn-like" onclick="likeProfile(${profile.id})">좋아요 ❤️</button>
+  `;
+  return card;
+}
+
+// 좋아요 클릭 함수
+function likeProfile(id) {
+  const profile = profiles.find(p => p.id === id);
+  if (profile) {
+    alert(`${profile.name}님과 매칭되었습니다! 🎉`);
+  }
+}
+
+// 페이지 로드 시 카드 추가
+profiles.forEach(profile => {
+  const card = createProfileCard(profile);
+  profilesContainer.appendChild(card);
+});
+</script>
+</body>
+</html>
