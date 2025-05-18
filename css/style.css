@@ -1,13 +1,13 @@
 /* 폰트 임포트 (로컬에서 불러올 경우 @font-face 사용) */
 @font-face {
   font-family: 'GapyeongHanseokbongB';
-  src: url('assets/fonts/GapyeongHanseokbongB.woff') format('woff');
+  src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('ttf');
   font-weight: bold;
 }
 
 @font-face {
   font-family: 'GapyeongHanseokbongL';
-  src: url('assets/fonts/GapyeongHanseokbongL.woff') format('woff');
+  src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('ttf');
   font-weight: normal;
 }
 
