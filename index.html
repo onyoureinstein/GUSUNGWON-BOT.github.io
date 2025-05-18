@@ -203,75 +203,17 @@
     <h2>고종과의 대화</h2>
   </section>
 
-  <footer>
-    <p>version 2025.05.18</p>
-  </footer>
-
-  <script>
-    const profiles = [
-      {
-        id: 1,
-        name: '고종',
-        age: 45,
-        location: '조선',
-        bio: '대한제국의 마지막 황제, 격변의 시대에도 강인함과 책임감을 지닌 리더.',
-        img: 'https://t1.daumcdn.net/news/201809/18/mydaily/20180918164415661hyfa.jpg'
-      },
-      {
-        id: 2,
-        name: '유진초이',
-        age: 30,
-        location: '조선',
-        bio: '미국 해병대 출신, 과거의 상처를 딛고 진심으로 사람과 인연을 소중히 여기는 사람입니다.',
-        img: 'https://www.ntdtv.kr/assets/uploads/2022/12/e92a60aca492944db51f1a54ec1c6337.jpeg'
-      },
-      {
-        id: 3,
-        name: '구동매',
-        age: 26,
-        location: '조선',
-        bio: '강인한 의지와 뜨거운 애국심으로 조국을 위해 목숨을 바치는 인물',
-        img: 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/06/29/01c3955a-d081-4aff-9afe-6000f4d7a6da.jpg'
-      }
-    ];
-
-    const profilesContainer = document.getElementById('profiles');
-
-    function createProfileCard(profile) {
-      const card = document.createElement('div');
-      card.className = 'profile-card';
-      card.innerHTML = `
-        <img src="${profile.img}" alt="${profile.name}" class="profile-img" />
-        <div class="profile-name-age">${profile.name}, ${profile.age}</div>
-        <div class="profile-location">${profile.location}</div>
-        <div class="profile-bio">${profile.bio}</div>
-        <button class="btn-like" onclick="likeProfile(${profile.id})">
-          <span class="material-icons">favorite</span> 좋아요
-        </button>
-      `;
-      return card;
-    }
-
-    function likeProfile(id) {
-      const profile = profiles.find(p => p.id === id);
-      if (profile) {
-        alert(`${profile.name}님과 매칭되었습니다! 🎉`);
-      }
-    }
-
-    profiles.forEach(profile => {
-      const card = createProfileCard(profile);
-      profilesContainer.appendChild(card);
-    });
-  </script>
-
-  <!-- Dialogflow Messenger: body 닫기 직전에 넣기 -->
+  <!-- Dialogflow Messenger 추가 부분 -->
   <df-messenger
     chat-title="연화첩"
     agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
     language-code="ko"
   ></df-messenger>
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+  <footer>
+    <p>version 2025.05.18</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
