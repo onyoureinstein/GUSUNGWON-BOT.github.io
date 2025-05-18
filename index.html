@@ -29,18 +29,17 @@
    }
 
     body {
-      background-image: url('assets/background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 100vh;
-      margin: 0;
-      color: white;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  background-image: url('assets/background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+  color: white;
+  text-align: center;
+  /* flexbox 유지하되 flex-grow 안쓰고 */
+  display: block; /* 기존 flex 제거 */
+}
 
     .text01 {
       font-family: 'GapyeongHanseokbongB', serif;
