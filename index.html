@@ -12,9 +12,6 @@
   <!-- Google Fonts for icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-  <!-- Dialogflow Messenger -->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-
   <style>
     @font-face {
       font-family: 'GapyeongHanseokbongB';
@@ -151,24 +148,10 @@
     }
 
     #chatbot-section {
-      position: relative;
       padding: 50px 20px 80px 20px;
       text-align: center;
       color: white;
       background: url('assets/background.jpg') no-repeat center center / cover;
-    }
-
-    #chatbot-section::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 0;
-    }
-
-    #chatbot-section > * {
-      position: relative;
-      z-index: 1;
     }
 
     #chatbot-section h2 {
@@ -180,14 +163,6 @@
       border-bottom: 3px solid #ff6666;
       display: inline-block;
       padding-bottom: 8px;
-    }
-
-    df-messenger {
-      --df-messenger-button-titlebar-color: #ff6666;
-      --df-messenger-button-titlebar-font-color: white;
-      --df-messenger-chat-background-color: #1a1a1a;
-      --df-messenger-font-color: white;
-      --df-messenger-send-icon: #ff6666;
     }
 
     footer {
@@ -226,12 +201,6 @@
 
   <section id="chatbot-section">
     <h2>고종과의 대화</h2>
-    <df-messenger
-      intent="WELCOME"
-      chat-title="고종과의 대화"
-      agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
-      language-code="ko"
-    ></df-messenger>
   </section>
 
   <footer>
@@ -295,6 +264,14 @@
       profilesContainer.appendChild(card);
     });
   </script>
+
+  <!-- Dialogflow Messenger: body 닫기 직전에 넣기 -->
+  <df-messenger
+    chat-title="연화첩"
+    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
+    language-code="ko"
+  ></df-messenger>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
