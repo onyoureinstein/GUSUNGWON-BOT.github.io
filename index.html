@@ -20,39 +20,16 @@
       src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
     }
 
-    /* 페이드인 + 확대 애니메이션 */
     body {
       margin: 0;
       font-family: 'GapyeongHanseokbongL', serif;
       background: url('assets/background.jpg') no-repeat center center / cover;
       color: #f5f0e1;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-      opacity: 0;
-      transform: scale(1.03);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-      padding-top: 56px; /* 네비 높이 공간 확보 */
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body.loaded {
-      opacity: 1;
-      transform: scale(1);
     }
 
     nav.navbar {
       background-color: rgba(60, 40, 30, 0.85);
-      box-shadow: 0 0 15px rgba(230, 190, 140, 0.4);
-      transition: background-color 0.5s ease, box-shadow 0.5s ease;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav.scrolled {
-      background-color: rgba(100, 70, 50, 0.95);
-      box-shadow: 0 0 25px rgba(255, 230, 180, 0.7);
     }
 
     nav .navbar-brand {
@@ -65,10 +42,6 @@
       padding: 80px 20px 50px 20px;
       text-align: center;
       background: rgba(30, 20, 15, 0.7);
-      max-width: 900px;
-      margin: 0 auto 40px auto;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.7);
     }
 
     #intro-section h1 {
@@ -76,6 +49,7 @@
       font-size: 50px;
       margin-bottom: 10px;
       color: #f2e6c2;
+      animation: fadeScaleIn 1.2s ease forwards;
     }
 
     #intro-section p.subtitle {
@@ -89,39 +63,10 @@
       font-style: italic;
     }
 
-    #intro-section div.description {
-      margin-top: 25px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #f0e6d2;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 500;
-    }
-
-    #intro-section div.description em {
-      font-style: normal;
-      color: #d1bfa1;
-      font-weight: 400;
-      display: block;
-      margin-top: 15px;
-      font-size: 14px;
-    }
-
-    #intro-section div.description a {
-      color: #f8d9b2;
-      text-decoration: underline;
-    }
-
     #chatbot-section {
       text-align: center;
       padding: 60px 20px;
       background: rgba(50, 30, 25, 0.75);
-      max-width: 420px;
-      margin: 0 auto 50px auto;
-      border-radius: 15px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
     }
 
     #chatbot-section h2 {
@@ -129,39 +74,19 @@
       font-size: 32px;
       margin-bottom: 25px;
       color: #f3e3d0;
-      user-select: none;
     }
 
     iframe {
       border: none;
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      max-width: 350px;
-      width: 100%;
-      height: 430px;
-      transition: box-shadow 0.4s ease;
-    }
-
-    iframe:hover {
-      box-shadow: 0 0 40px 6px rgba(255, 215, 140, 0.8);
+      animation: floatShadow 4s ease-in-out infinite;
     }
 
     #fun-section {
       padding: 40px 20px;
       text-align: center;
       background: rgba(20, 10, 10, 0.6);
-      max-width: 600px;
-      margin: 0 auto 50px auto;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.7);
-      user-select: none;
-    }
-
-    #fun-section h2 {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #edd9aa;
     }
 
     #quote-box {
@@ -169,22 +94,6 @@
       color: #edd9aa;
       margin-top: 20px;
       font-style: italic;
-      opacity: 0;
-      transition: opacity 0.7s ease;
-      display: inline-block;
-      min-height: 48px;
-      max-width: 450px;
-    }
-
-    #quote-box.show {
-      opacity: 1;
-      animation: shake 0.6s ease;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-5px); }
-      40%, 80% { transform: translateX(5px); }
     }
 
     .btn-quote {
@@ -196,13 +105,14 @@
       border-radius: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       cursor: pointer;
-      user-select: none;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
     }
 
     .btn-quote:hover {
       background-color: #8a6450;
+    }
+
+    .btn-quote:active {
+      animation: shake 0.4s ease;
     }
 
     footer {
@@ -211,17 +121,6 @@
       text-align: center;
       padding: 15px;
       background-color: rgba(0,0,0,0.7);
-      user-select: none;
-    }
-
-    /* 눈 내림 캔버스 */
-    #snow {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 9999;
     }
 
     @media (max-width: 600px) {
@@ -232,12 +131,35 @@
         width: 90%;
         height: 430px;
       }
-      #fun-section {
-        max-width: 90%;
+    }
+
+    /* 애니메이션 키프레임 */
+    @keyframes fadeScaleIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
       }
-      #chatbot-section {
-        max-width: 90%;
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
+    }
+
+    @keyframes floatShadow {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        transform: translateY(0);
+      }
+      50% {
+        box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
     }
   </style>
 </head>
@@ -249,14 +171,56 @@
     </div>
   </nav>
 
-  <section id="intro-section">
-    <h1>명성황후 : 고궁연애록</h1>
-    <p class="subtitle">"궁궐 안 사랑, 그리고 비극. 명성황후의 흔적을 따라가는 감각적 체험 행사"</p>
-    <p class="author">기획 │ 강성은 · 권오선 · 김예림 · 문서영 · 정선용</p>
+<section id="intro-section">
+  <h1>명성황후 : 고궁연애록</h1>
+  <p class="subtitle">"궁궐 안 사랑, 그리고 비극. 명성황후의 흔적을 따라가는 감각적 체험 행사"</p>
+  <p class="author">기획 │ 강성은 · 권오선 · 김예림 · 문서영 · 정선용</p>
 
-    <div class="description">
-      이 사이트는 세종대학교 문화원형 프로젝트의 일환으로 기획된 <strong>명성황후 인터랙티브 체험 웹페이지</strong>입니다.<br>
-      고궁 배경과 함께 명성황후의 이야기를 감각적으로 느끼고, 관객이 직접 체험할 수 있는 온라인 공간을 목표로 제작 중입니다.
-      <br><br>
-      <em>※ 현재 사이트는 기획·개발 중이며, 아래 링크에서 실제 체험형 버전을 미리 볼 수 있습니다.</em><br>
-      👉 <a href="https://poomang.com/preview/8dl183" target="_
+  <div style="margin-top: 25px; font-size: 16px; line-height: 1.7; max-width: 720px; margin-left: auto; margin-right: auto;">
+    이 사이트는 세종대학교 문화원형 프로젝트의 일환으로 기획된 <strong>명성황후 인터랙티브 체험 웹페이지</strong>입니다.  
+    고궁 배경과 함께 명성황후의 이야기를 감각적으로 느끼고, 관객이 직접 체험할 수 있는 온라인 공간을 목표로 제작 중입니다.
+    
+    <br><br>
+    <em>※ 현재 사이트는 기획·개발 중이며, 아래 링크에서 실제 체험형 버전을 미리 볼 수 있습니다.</em>
+    <br>
+    👉 <a href="https://poomang.com/preview/8dl183" target="_blank" style="color: #f8d9b2; text-decoration: underline;">https://poomang.com/preview/8dl183</a>
+  </div>
+</section>
+
+  <section id="chatbot-section">
+    <h2>명성황후와 대화해보기</h2>
+    <iframe
+      allow="microphone;"
+      width="350"
+      height="430"
+      src="https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463">
+    </iframe>
+  </section>
+
+  <section id="fun-section">
+    <h2>오늘의 궁중 명언</h2>
+    <button class="btn-quote" onclick="showRandomQuote()">🍵 인연의 말씀 듣기</button>
+    <div id="quote-box"></div>
+  </section>
+
+  <footer>
+    version 2025.05.21
+  </footer>
+
+  <script>
+    const quotes = [
+      "“비단은 찢어져도 그 무늬를 잃지 않는다.”",
+      "“나는 황후가 아니라 한 인간으로 기억되길 바랍니다.”",
+      "“인연은 기다림보다, 기억 속에서 더 깊게 피어난다.”",
+      "“궁궐은 크나, 마음 둘 곳은 적었다.”",
+      "“그리움은 시간보다 더 오래 남는다.”",
+      "“아름다움은 권력보다 오래간다.”"
+    ];
+
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quote-box').innerText = quotes[randomIndex];
+    }
+  </script>
+</body>
+</html>
