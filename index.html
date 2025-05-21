@@ -9,17 +9,14 @@
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Google Fonts for icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
   <style>
+    /* 한석봉체 */
     @font-face {
       font-family: 'GapyeongHanseokbongB';
       src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype');
       font-weight: bold;
       font-style: normal;
     }
-
     @font-face {
       font-family: 'GapyeongHanseokbongL';
       src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
@@ -27,162 +24,88 @@
       font-style: normal;
     }
 
+    /* 전체 배경 */
     body {
       margin: 0;
-      font-family: 'GapyeongHanseokbongL', serif;
-      background-color: #1a1a1a;
-      color: white;
-    }
-
-    nav.navbar {
-      background-color: #111;
-    }
-
-    nav .navbar-brand {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 22px;
-    }
-
-    #profile-section {
-      background: url('assets/background.jpg') no-repeat center center / cover;
-      padding: 40px 20px 80px 20px;
-      text-align: center;
-      color: white;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-    }
-
-    #profile-section h1 {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    #profile-section p.subtitle {
-      font-family: 'GapyeongHanseokbongL', serif;
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-
-    #profile-section p.author {
-      font-family: 'GapyeongHanseokbongL', serif;
-      font-size: 14px;
-      margin-top: 0;
-      color: #ffd6d6cc;
-      font-style: italic;
-    }
-
-    .profiles-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      max-width: 960px;
-      margin: 40px auto 0 auto;
-    }
-
-    .profile-card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      width: 260px;
-      padding: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .profile-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
-    }
-
-    .profile-img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 20px;
-      margin-bottom: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-    }
-
-    .profile-name-age {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 24px;
       color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .profile-location {
       font-family: 'GapyeongHanseokbongL', serif;
-      font-size: 14px;
-      color: #ffd6d6;
-      margin-bottom: 12px;
+      background: url('assets/background.jpg') no-repeat center center / cover;
+      text-shadow: 2px 2px 6px rgba(0,0,0,.7);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .profile-bio {
-      font-family: 'Roboto', sans-serif;
-      font-size: 13px;
-      color: #f0e6e6;
-      min-height: 60px;
+    /* 상단 소개 섹션 */
+    #intro-section {
+      flex: 1 0 auto;
+      padding: 80px 20px 60px 20px;
+      text-align: center;
+      backdrop-filter: brightness(0.6);
+    }
+    #intro-section h1 {
+      font-family: 'GapyeongHanseokbongB', serif;
+      font-size: 52px;
       margin-bottom: 15px;
     }
-
-    #chatbot-section {
-      background-color: #222;
-      padding: 50px 20px 80px 20px;
-      text-align: center;
+    #intro-section p.subtitle {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    #intro-section p.author {
+      font-size: 15px;
+      font-style: italic;
+      color: #ffd6d6cc;
+      margin-bottom: 40px;
     }
 
+    /* 챗봇 섹션 */
+    #chatbot-section {
+      flex: 0 0 auto;
+      padding: 40px 20px 80px 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.55);
+    }
     #chatbot-section h2 {
       font-family: 'GapyeongHanseokbongB', serif;
       font-size: 36px;
-      color: #ff6666;
+      color: #ff9d9d;
       margin-bottom: 25px;
+      text-shadow: none;
     }
-
     iframe {
       border-radius: 15px;
       border: none;
       box-shadow: 0 10px 40px rgba(255, 102, 102, 0.7);
-      max-width: 520px;
+      max-width: 600px;
       width: 100%;
-      height: 600px;
+      height: 620px;
     }
 
     footer {
+      flex-shrink: 0;
       font-size: 12px;
-      color: #bbb;
+      color: #ddd;
       text-align: center;
-      padding: 15px 0;
-      background-color: #111;
+      padding: 12px 0;
+      background: rgba(0,0,0,0.7);
     }
 
-    @media (max-width: 600px) {
-      .profiles-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .profile-card {
-        width: 90%;
-      }
-      iframe {
-        height: 500px;
-      }
+    @media (max-width: 640px) {
+      #intro-section h1 { font-size: 38px; }
+      iframe { height: 540px; }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">세종대학교 문화원형 프로젝트</a>
-    </div>
-  </nav>
-
-  <section id="profile-section">
+  <!-- 사이트 소개 -->
+  <section id="intro-section">
     <h1>명성황후 : 고궁연애록</h1>
     <p class="subtitle">"궁궐의 시간 속으로, 사랑과 역사가 교차하는 그날의 이야기"</p>
-    <p class="author">기획 · 강성은 권오선 김예림 문서영 정선용</p>
-    <div class="profiles-container" id="profiles"></div>
+    <p class="author">만든 사람 │ 강성은 · 권오선 · 김예림 · 문서영 · 정선용</p>
   </section>
 
+  <!-- Dialogflow 챗봇 -->
   <section id="chatbot-section">
     <h2>행사에 대해 궁금한 점이 있으신가요?</h2>
     <iframe
@@ -191,58 +114,7 @@
     </iframe>
   </section>
 
-  <footer>
-    <p>version 2025.05.18</p>
-  </footer>
-
-  <script>
-    const profiles = [
-      {
-        id: 1,
-        name: '고종',
-        age: 45,
-        location: '경복궁',
-        bio: '조선을 근대국가로 이끌기 위해 노력한 대한제국의 초대 황제. 고궁에서의 모습과 목소리가 재현됩니다.',
-        img: 'https://t1.daumcdn.net/news/201809/18/mydaily/20180918164415661hyfa.jpg'
-      },
-      {
-        id: 2,
-        name: '명성황후',
-        age: 43,
-        location: '경복궁',
-        bio: '치열한 궁중 정치 속에서 외교적 지혜와 강단으로 나라를 지켜낸 조선의 황후. 그녀의 삶을 따라가는 체험 공간이 마련됩니다.',
-        img: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Empress_Myeongseong_of_Korea.jpg'
-      },
-      {
-        id: 3,
-        name: '홍계훈',
-        age: 35,
-        location: '궁중 호위',
-        bio: '명성황후를 지키기 위해 목숨을 바친 호위무사. 그의 충성과 신념은 오늘날까지 전해집니다.',
-        img: 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/06/29/01c3955a-d081-4aff-9afe-6000f4d7a6da.jpg'
-      }
-    ];
-
-    const profilesContainer = document.getElementById('profiles');
-
-    function createProfileCard(profile) {
-      const card = document.createElement('div');
-      card.className = 'profile-card';
-
-      card.innerHTML = `
-        <img src="${profile.img}" alt="${profile.name}" class="profile-img" />
-        <div class="profile-name-age">${profile.name}, ${profile.age}세</div>
-        <div class="profile-location">${profile.location}</div>
-        <div class="profile-bio">${profile.bio}</div>
-      `;
-      return card;
-    }
-
-    profiles.forEach(profile => {
-      const card = createProfileCard(profile);
-      profilesContainer.appendChild(card);
-    });
-  </script>
+  <footer>version 2025.05.21</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
