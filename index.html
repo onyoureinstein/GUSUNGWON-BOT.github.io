@@ -197,12 +197,8 @@
   <!-- 명성황후와 대화 섹션 -->
 <section id="chatbot-section">
   <h2>명성황후와 대화해보기</h2>
-  <df-messenger
-    chat-title="명성황후"
-    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
-    language-code="ko"
-  ></df-messenger>
 </section>
+
 
 
 
@@ -223,8 +219,15 @@
     function showRandomQuote() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('quote-box').innerText = quotes[randomIndex];
+
+        <df-messenger
+    chat-title="명성황후"
+    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
+    language-code="ko"
+  ></df-messenger>
+      
     }
   </script>
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </body>
 </html>
