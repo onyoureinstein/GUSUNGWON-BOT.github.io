@@ -1,279 +1,249 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>연화첩(戀火帖)</title>
-<link rel="icon" type="image/x-icon" href="assets/연화첩.ico" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>명성황후 : 고궁연애록</title>
+  <link rel="icon" type="image/x-icon" href="assets/연화첩.ico" />
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- Google Fonts for icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Google Fonts for icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-<style>
-  @font-face {
-    font-family: 'GapyeongHanseokbongB';
-    src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-  }
+  <style>
+    @font-face {
+      font-family: 'GapyeongHanseokbongB';
+      src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
 
-  @font-face {
-    font-family: 'GapyeongHanseokbongL';
-    src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+    @font-face {
+      font-family: 'GapyeongHanseokbongL';
+      src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-  body {
-    margin: 0;
-    font-family: 'GapyeongHanseokbongL', serif;
-    background-color: #1a1a1a;
-    color: white;
-  }
+    body {
+      margin: 0;
+      font-family: 'GapyeongHanseokbongL', serif;
+      background-color: #1a1a1a;
+      color: white;
+    }
 
-  nav.navbar {
-    background-color: #111;
-  }
+    nav.navbar {
+      background-color: #111;
+    }
 
-  nav .navbar-brand {
-    font-family: 'GapyeongHanseokbongB', serif;
-    font-size: 22px;
-  }
+    nav .navbar-brand {
+      font-family: 'GapyeongHanseokbongB', serif;
+      font-size: 22px;
+    }
 
-  /* 프로필 선택 영역 */
-  #profile-section {
-  background: url('assets/background.jpg') no-repeat center center / cover;
-  padding: 40px 20px 80px 20px;
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-}
-ction h1 {
-    font-family: 'GapyeongHanseokbongB', serif;
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  #profile-section p.subtitle {
-    font-family: 'GapyeongHanseokbongL', serif;
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  #profile-section p.author {
-    font-family: 'GapyeongHanseokbongL', serif;
-    font-size: 14px;
-    margin-top: 0;
-    color: #ffd6d6cc;
-    font-style: italic;
-  }
+    #profile-section {
+      background: url('assets/background.jpg') no-repeat center center / cover;
+      padding: 40px 20px 80px 20px;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    }
 
-  .profiles-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 960px;
-    margin: 40px auto 0 auto;
-  }
+    #profile-section h1 {
+      font-family: 'GapyeongHanseokbongB', serif;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
 
-  .profile-card {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    width: 260px;
-    padding: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-  }
-  .profile-card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
-  }
+    #profile-section p.subtitle {
+      font-family: 'GapyeongHanseokbongL', serif;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
 
-  .profile-img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-  }
+    #profile-section p.author {
+      font-family: 'GapyeongHanseokbongL', serif;
+      font-size: 14px;
+      margin-top: 0;
+      color: #ffd6d6cc;
+      font-style: italic;
+    }
 
-  .profile-name-age {
-    font-family: 'GapyeongHanseokbongB', serif;
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-
-  .profile-location {
-    font-family: 'GapyeongHanseokbongL', serif;
-    font-size: 14px;
-    color: #ffd6d6;
-    margin-bottom: 12px;
-  }
-
-  .profile-bio {
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    color: #f0e6e6;
-    min-height: 60px;
-    margin-bottom: 15px;
-  }
-
-  .btn-like {
-    background-color: #ff3b3b;
-    border: none;
-    border-radius: 50px;
-    width: 100%;
-    padding: 11px 0;
-    color: white;
-    font-weight: 600;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-    box-shadow: 0 5px 14px rgba(255, 59, 59, 0.75);
-    transition: background-color 0.3s ease;
-  }
-  .btn-like:hover {
-    background-color: #ff1a1a;
-  }
-
-  /* 챗봇 영역 */
-  #chatbot-section {
-    background-color: #222;
-    padding: 50px 20px 80px 20px;
-    text-align: center;
-  }
-  #chatbot-section h2 {
-    font-family: 'GapyeongHanseokbongB', serif;
-    font-size: 36px;
-    color: #ff6666;
-    margin-bottom: 25px;
-  }
-
-  iframe {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 10px 40px rgba(255, 102, 102, 0.7);
-    max-width: 520px;
-    width: 100%;
-    height: 600px;
-  }
-
-  footer {
-    font-size: 12px;
-    color: #bbb;
-    text-align: center;
-    padding: 15px 0;
-    background-color: #111;
-  }
-
-  @media (max-width: 600px) {
     .profiles-container {
-      flex-direction: column;
-      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 960px;
+      margin: 40px auto 0 auto;
     }
+
     .profile-card {
-      width: 90%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 260px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
+
+    .profile-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    }
+
+    .profile-name-age {
+      font-family: 'GapyeongHanseokbongB', serif;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .profile-location {
+      font-family: 'GapyeongHanseokbongL', serif;
+      font-size: 14px;
+      color: #ffd6d6;
+      margin-bottom: 12px;
+    }
+
+    .profile-bio {
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      color: #f0e6e6;
+      min-height: 60px;
+      margin-bottom: 15px;
+    }
+
+    #chatbot-section {
+      background-color: #222;
+      padding: 50px 20px 80px 20px;
+      text-align: center;
+    }
+
+    #chatbot-section h2 {
+      font-family: 'GapyeongHanseokbongB', serif;
+      font-size: 36px;
+      color: #ff6666;
+      margin-bottom: 25px;
+    }
+
     iframe {
-      height: 500px;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 10px 40px rgba(255, 102, 102, 0.7);
+      max-width: 520px;
+      width: 100%;
+      height: 600px;
     }
-  }
-</style>
+
+    footer {
+      font-size: 12px;
+      color: #bbb;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #111;
+    }
+
+    @media (max-width: 600px) {
+      .profiles-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .profile-card {
+        width: 90%;
+      }
+      iframe {
+        height: 500px;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">세종대학교 문화원형 프로젝트</a>
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">세종대학교 문화원형 프로젝트</a>
+    </div>
+  </nav>
 
-<section id="profile-section">
-  <h1>연화첩(戀火帖)</h1>
-  <p class="subtitle">"연심이 아른거리어, 오늘도 이렇듯 인연의 실마리를 짓노라."</p>
-  <p class="author">made by 강성은 권오선 김예림 문서영 정선용</p>
-  <div class="profiles-container" id="profiles">
-    <!-- JS 프로필 카드 삽입 -->
-  </div>
-</section>
+  <section id="profile-section">
+    <h1>명성황후 : 고궁연애록</h1>
+    <p class="subtitle">"궁궐의 시간 속으로, 사랑과 역사가 교차하는 그날의 이야기"</p>
+    <p class="author">기획 · 강성은 권오선 김예림 문서영 정선용</p>
+    <div class="profiles-container" id="profiles"></div>
+  </section>
 
-<section id="chatbot-section">
-  <h2>고종과 대화하기</h2>
-  <iframe
-    allow="microphone;"
-    src="https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463">
-  </iframe>
-</section>
+  <section id="chatbot-section">
+    <h2>행사에 대해 궁금한 점이 있으신가요?</h2>
+    <iframe
+      allow="microphone;"
+      src="https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463">
+    </iframe>
+  </section>
 
-<footer>
-  <p>version 2025.05.18</p>
-</footer>
+  <footer>
+    <p>version 2025.05.18</p>
+  </footer>
 
-<script>
-  const profiles = [
-    {
-      id: 1,
-      name: '고종',
-      age: 45,
-      location: '조선',
-      bio: '대한제국의 마지막 황제, 격변의 시대에도 강인함과 책임감을 지닌 리더.',
-      img: 'https://t1.daumcdn.net/news/201809/18/mydaily/20180918164415661hyfa.jpg'
-    },
-    {
-      id: 2,
-      name: '유진초이',
-      age: 30,
-      location: '조선',
-      bio: '미국 해병대 출신, 과거의 상처를 딛고 진심으로 사람과 인연을 소중히 여기는 사람입니다.',
-      img: 'https://www.ntdtv.kr/assets/uploads/2022/12/e92a60aca492944db51f1a54ec1c6337.jpeg'
-    },
-    {
-      id: 3,
-      name: '구동매',
-      age: 26,
-      location: '조선',
-      bio: '강인한 의지와 뜨거운 애국심으로 조국을 위해 목숨을 바치는 인물',
-      img: 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/06/29/01c3955a-d081-4aff-9afe-6000f4d7a6da.jpg'
+  <script>
+    const profiles = [
+      {
+        id: 1,
+        name: '고종',
+        age: 45,
+        location: '경복궁',
+        bio: '조선을 근대국가로 이끌기 위해 노력한 대한제국의 초대 황제. 고궁에서의 모습과 목소리가 재현됩니다.',
+        img: 'https://t1.daumcdn.net/news/201809/18/mydaily/20180918164415661hyfa.jpg'
+      },
+      {
+        id: 2,
+        name: '명성황후',
+        age: 43,
+        location: '경복궁',
+        bio: '치열한 궁중 정치 속에서 외교적 지혜와 강단으로 나라를 지켜낸 조선의 황후. 그녀의 삶을 따라가는 체험 공간이 마련됩니다.',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Empress_Myeongseong_of_Korea.jpg'
+      },
+      {
+        id: 3,
+        name: '홍계훈',
+        age: 35,
+        location: '궁중 호위',
+        bio: '명성황후를 지키기 위해 목숨을 바친 호위무사. 그의 충성과 신념은 오늘날까지 전해집니다.',
+        img: 'https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/06/29/01c3955a-d081-4aff-9afe-6000f4d7a6da.jpg'
+      }
+    ];
+
+    const profilesContainer = document.getElementById('profiles');
+
+    function createProfileCard(profile) {
+      const card = document.createElement('div');
+      card.className = 'profile-card';
+
+      card.innerHTML = `
+        <img src="${profile.img}" alt="${profile.name}" class="profile-img" />
+        <div class="profile-name-age">${profile.name}, ${profile.age}세</div>
+        <div class="profile-location">${profile.location}</div>
+        <div class="profile-bio">${profile.bio}</div>
+      `;
+      return card;
     }
-  ];
 
-  const profilesContainer = document.getElementById('profiles');
+    profiles.forEach(profile => {
+      const card = createProfileCard(profile);
+      profilesContainer.appendChild(card);
+    });
+  </script>
 
-  function createProfileCard(profile) {
-    const card = document.createElement('div');
-    card.className = 'profile-card';
-
-    card.innerHTML = `
-      <img src="${profile.img}" alt="${profile.name}" class="profile-img" />
-      <div class="profile-name-age">${profile.name}, ${profile.age}</div>
-      <div class="profile-location">${profile.location}</div>
-      <div class="profile-bio">${profile.bio}</div>
-      <button class="btn-like" onclick="likeProfile(${profile.id})">
-        <span class="material-icons">favorite</span> 좋아요
-      </button>
-    `;
-    return card;
-  }
-
-  function likeProfile(id) {
-    const profile = profiles.find(p => p.id === id);
-    if (profile) {
-      alert(`${profile.name}님과 매칭되었습니다! 🎉`);
-    }
-  }
-
-  profiles.forEach(profile => {
-    const card = createProfileCard(profile);
-    profilesContainer.appendChild(card);
-  });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
