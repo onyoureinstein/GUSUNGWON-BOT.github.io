@@ -195,15 +195,15 @@
   </section>
 
   <!-- 명성황후와 대화 섹션 -->
-  <section id="chatbot-section">
-    <h2>명성황후와 대화해보기</h2>
-    <iframe
-    allow="microphone;"
-    width="350"
-    height="430"
-    src="https://console.dialogflow.com/api-client/demo/embedded/77410fb8-8bb2-462c-b35c-2bc98ebfa463">
-    </iframe>
-  </section>
+<section id="chatbot-section">
+  <h2>명성황후와 대화해보기</h2>
+  <df-messenger
+    chat-title="명성황후"
+    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
+    language-code="ko"
+  ></df-messenger>
+</section>
+
 
 
   <footer>
@@ -225,5 +225,6 @@
       document.getElementById('quote-box').innerText = quotes[randomIndex];
     }
   </script>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </body>
 </html>
