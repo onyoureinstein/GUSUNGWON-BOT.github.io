@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>명성황후 : 고궁연애록</title>
-  <link rel="icon" href="assets/연화첩.ico" type="image/x-icon">
+  <link rel="icon" href="assets/연화첩.ico" type="image/x-icon" />
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,12 +20,30 @@
       src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
     }
 
+    /* 페이드 인 오버레이 */
+    .fade-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      z-index: 9999;
+      animation: fadeOut 3s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
     body {
       margin: 0;
       font-family: 'GapyeongHanseokbongL', serif;
       background: url('assets/background.jpg') no-repeat center center / cover;
       color: #f5f0e1;
       text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      overflow-x: hidden;
+      position: relative;
     }
 
     nav.navbar {
@@ -42,6 +60,9 @@
       padding: 80px 20px 50px 20px;
       text-align: center;
       background: rgba(30, 20, 15, 0.7);
+      max-width: 900px;
+      margin: 0 auto 40px;
+      border-radius: 15px;
     }
 
     #intro-section h1 {
@@ -49,6 +70,17 @@
       font-size: 50px;
       margin-bottom: 10px;
       color: #f2e6c2;
+      min-height: 62px; /* 타이핑 애니메이션 대비 */
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid #f2e6c2; /* 커서 느낌 */
+      animation: blinkCursor 0.8s step-end infinite;
+      opacity: 0;
+    }
+
+    @keyframes blinkCursor {
+      from, to { border-color: transparent; }
+      50% { border-color: #f2e6c2; }
     }
 
     #intro-section p.subtitle {
@@ -62,10 +94,24 @@
       font-style: italic;
     }
 
+    #intro-section div.description {
+      margin-top: 25px;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #edd9aa;
+    }
+
     #chatbot-section {
       text-align: center;
       padding: 60px 20px;
       background: rgba(50, 30, 25, 0.75);
+      max-width: 400px;
+      margin: 0 auto 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
     }
 
     #chatbot-section h2 {
@@ -85,13 +131,25 @@
       padding: 40px 20px;
       text-align: center;
       background: rgba(20, 10, 10, 0.6);
+      max-width: 700px;
+      margin: 0 auto 50px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      color: #edd9aa;
+    }
+
+    #fun-section h2 {
+      font-family: 'GapyeongHanseokbongB', serif;
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #f3e3d0;
     }
 
     #quote-box {
       font-size: 18px;
-      color: #edd9aa;
       margin-top: 20px;
       font-style: italic;
+      min-height: 50px;
     }
 
     .btn-quote {
@@ -102,6 +160,9 @@
       padding: 10px 20px;
       border-radius: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
 
     .btn-quote:hover {
@@ -114,6 +175,7 @@
       text-align: center;
       padding: 15px;
       background-color: rgba(0,0,0,0.7);
+      user-select: none;
     }
 
     @media (max-width: 600px) {
@@ -125,31 +187,56 @@
         height: 430px;
       }
     }
+
+    /* 연꽃잎 이펙트용 */
+    .petal {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: url('assets/petal.png') no-repeat center/contain;
+      pointer-events: none;
+      will-change: transform;
+      z-index: 9999;
+      opacity: 0.9;
+      animation: fall 4s linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+  <!-- 페이드 인 오버레이 -->
+  <div class="fade-overlay"></div>
+
   <nav class="navbar navbar-dark">
     <div class="container">
       <span class="navbar-brand">세종대학교 문화원형 프로젝트</span>
     </div>
   </nav>
 
-<section id="intro-section">
-  <h1>명성황후 : 고궁연애록</h1>
-  <p class="subtitle">"궁궐 안 사랑, 그리고 비극. 명성황후의 흔적을 따라가는 감각적 체험 행사"</p>
-  <p class="author">기획 │ 강성은 · 권오선 · 김예림 · 문서영 · 정선용</p>
+  <section id="intro-section">
+    <h1 id="title-typing"></h1>
+    <p class="subtitle">"궁궐 안 사랑, 그리고 비극. 명성황후의 흔적을 따라가는 감각적 체험 행사"</p>
+    <p class="author">기획 │ 강성은 · 권오선 · 김예림 · 문서영 · 정선용</p>
 
-  <div style="margin-top: 25px; font-size: 16px; line-height: 1.7; max-width: 720px; margin-left: auto; margin-right: auto;">
-    이 사이트는 세종대학교 문화원형 프로젝트의 일환으로 기획된 <strong>명성황후 인터랙티브 체험 웹페이지</strong>입니다.  
-    고궁 배경과 함께 명성황후의 이야기를 감각적으로 느끼고, 관객이 직접 체험할 수 있는 온라인 공간을 목표로 제작 중입니다.
-    
-    <br><br>
-    <em>※ 현재 사이트는 기획·개발 중이며, 아래 링크에서 실제 체험형 버전을 미리 볼 수 있습니다.</em>
-    <br>
-    👉 <a href="https://poomang.com/preview/8dl183" target="_blank" style="color: #f8d9b2; text-decoration: underline;">https://poomang.com/preview/8dl183</a>
-  </div>
-</section>
+    <div class="description">
+      이 사이트는 세종대학교 문화원형 프로젝트의 일환으로 기획된 <strong>명성황후 인터랙티브 체험 웹페이지</strong>입니다.<br>
+      고궁 배경과 함께 명성황후의 이야기를 감각적으로 느끼고, 관객이 직접 체험할 수 있는 온라인 공간을 목표로 제작 중입니다.<br><br>
+      <em>※ 현재 사이트는 기획·개발 중이며, 아래 링크에서 실제 체험형 버전을 미리 볼 수 있습니다.</em><br>
+      👉 <a href="https://poomang.com/preview/8dl183" target="_blank" style="color: #f8d9b2; text-decoration: underline;">https://poomang.com/preview/8dl183</a>
+    </div>
+  </section>
 
   <section id="chatbot-section">
     <h2>명성황후와 대화해보기</h2>
@@ -171,7 +258,28 @@
     version 2025.05.21
   </footer>
 
+  <!-- 배경음악 -->
+  <audio autoplay loop id="bgm" src="assets/audio/palace_bgm.mp3" preload="auto"></audio>
+
   <script>
+    // 타이핑 애니메이션 (제목)
+    const titleText = "명성황후 : 고궁연애록";
+    const titleElement = document.getElementById("title-typing");
+    let charIndex = 0;
+
+    function typeTitle() {
+      if (charIndex < titleText.length) {
+        titleElement.innerHTML += titleText.charAt(charIndex);
+        charIndex++;
+        titleElement.style.opacity = 1;
+        setTimeout(typeTitle, 180);
+      }
+    }
+    window.addEventListener("load", () => {
+      typeTitle();
+    });
+
+    // 궁중 명언 버튼
     const quotes = [
       "“비단은 찢어져도 그 무늬를 잃지 않는다.”",
       "“나는 황후가 아니라 한 인간으로 기억되길 바랍니다.”",
@@ -185,6 +293,25 @@
       const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('quote-box').innerText = quotes[randomIndex];
     }
-  </script>
-</body>
-</html>
+
+    // 연꽃잎 마우스 트레일
+    const petals = [];
+    const petalImage = 'assets/petal.png'; // 연꽃잎 이미지 경로
+
+    function createPetal(x, y) {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = x + 'px';
+      petal.style.top = y + 'px';
+      petal.style.animationDuration = (3 + Math.random() * 2) + 's';
+      petal.style.opacity = (0.6 + Math.random() * 0.4).toFixed(2);
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 4000);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.7) { // 30% 확률로 연꽃잎 생성 (과하지 않게)
+        createPet
