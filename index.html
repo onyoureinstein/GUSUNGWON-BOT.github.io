@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>고종, 시간 위에 서다</title>
+
+  <!-- Google Fonts: Noto Sans KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -11,23 +16,38 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      font-family: 'Noto Sans KR', sans-serif;
     }
+
     .bg-overlay {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    h1, h2 {
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+    }
+
+    section {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      opacity: 0.98;
     }
   </style>
 </head>
-<body class="text-white font-serif">
+<body class="text-gray-100">
   <div class="bg-overlay min-h-screen">
-    <header class="py-10 text-center border-b border-gray-600">
-      <h1 class="text-4xl font-bold tracking-wide">고종, 시간 위에 서다</h1>
-      <p class="mt-2 text-lg text-gray-300">제국의 기억, 그리고 오늘을 비추다</p>
+    <header class="py-16 text-center border-b border-gray-700">
+      <h1 class="text-5xl font-bold tracking-wide text-white">고종, 시간 위에 서다</h1>
+      <p class="mt-4 text-lg text-gray-300 italic">제국의 기억, 그리고 오늘을 비추다</p>
     </header>
 
-    <main class="max-w-3xl mx-auto px-6 py-12 space-y-16">
+    <main class="max-w-3xl mx-auto px-6 py-16 space-y-20">
       <section>
         <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">전시 소개</h2>
-        <p class="leading-relaxed text-gray-200">
+        <p class="leading-relaxed text-gray-200 text-[17px]">
           본 전시는 대한제국의 마지막 황제, 고종의 생애를 조명하며<br>
           근대와 제국, 식민의 경계에서 우리가 잊고 있던 역사적 진실을 되짚습니다.<br>
           사진, 문서, 영상 등 다양한 매체로 고종의 시대를 재현합니다.
@@ -36,7 +56,7 @@
 
       <section>
         <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">전시 정보</h2>
-        <ul class="text-gray-300 space-y-2 leading-relaxed">
+        <ul class="text-gray-300 text-[17px] space-y-2 leading-relaxed">
           <li><strong>기간:</strong> 2025년 7월 1일 ~ 7월 14일</li>
           <li><strong>장소:</strong> 덕수궁 석조전 특별관</li>
           <li><strong>관람 시간:</strong> 오전 10시 ~ 오후 6시 (매주 월요일 휴관)</li>
@@ -46,7 +66,7 @@
 
       <section>
         <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">기획 의도</h2>
-        <p class="text-gray-200 leading-relaxed">
+        <p class="text-gray-200 text-[17px] leading-relaxed">
           '고종'이라는 인물을 통해 역사 속 인간 군상의 운명과<br>
           제국의 종말이 개인의 삶에 어떻게 각인되었는지를 성찰합니다.<br>
           이는 과거를 복원하려는 시도가 아닌, 현재를 이해하기 위한 질문입니다.
@@ -55,12 +75,12 @@
 
       <section>
         <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">문의</h2>
-        <p class="text-gray-300">이메일: contact@kojong-exhibition.kr</p>
-        <p class="text-gray-300">인스타그램: @kojong2025</p>
+        <p class="text-gray-400 text-[17px]">이메일: contact@kojong-exhibition.kr</p>
+        <p class="text-gray-400 text-[17px]">인스타그램: @kojong2025</p>
       </section>
     </main>
 
-    <footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-600">
+    <footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-700">
       &copy; 2025 고종 전시 기획단. All rights reserved.
     </footer>
   </div>
@@ -68,7 +88,7 @@
   <!-- ✅ Dialogflow Chatbot 삽입 -->
   <df-messenger
     intent="WELCOME"
-    chat-title="고종전시봇"
+    chat-title="고종과 대화하기"
     agent-id="your-agent-id"
     language-code="ko">
   </df-messenger>
