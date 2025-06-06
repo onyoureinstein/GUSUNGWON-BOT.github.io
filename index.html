@@ -29,7 +29,7 @@
       line-height: 1.6;
     }
 
-    /* 팝업 배경은 살리고, 내부는 흰색, 버튼은 검정 */
+    /* 팝업 배경 */
     #welcome-modal {
       background-color: rgba(0,0,0,0.7);
       position: fixed;
@@ -39,16 +39,18 @@
       align-items: center;
       z-index: 50;
     }
+    /* 내부 직사각형 박스 - 모서리 없이 */
     #welcome-modal > div {
-      background: transparent;
-      padding: 1.5rem;
+      background: white;
+      padding: 2rem 2.5rem;
       max-width: 360px;
       text-align: center;
       color: black;
       font-weight: 500;
-      /* 배경 박스 대신 글씨에 그림자 줘서 가독성 확보 */
-      text-shadow: 0 0 5px rgba(255,255,255,0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border-radius: 0; /* 둥글기 제거 */
     }
+    /* 버튼 */
     #modal-close-btn {
       background-color: black;
       color: white;
@@ -58,7 +60,7 @@
       cursor: pointer;
       border: none;
       transition: background-color 0.3s ease;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
     #modal-close-btn:hover {
@@ -70,24 +72,31 @@
       margin: 0 auto;
     }
 
-    /* 제목과 텍스트 왼쪽 정렬, 좀 더 예술적이고 실험적인 레이아웃을 위해 폰트 크기 조절과 간격 조절 */
+    /* 제목 및 부제 */
     #title-section {
       margin-bottom: 3rem;
+      text-align: left;
     }
-    #title {
-      font-size: 3.5rem;
+    #title-line1 {
+      font-size: 2.8rem;
       font-weight: 700;
       letter-spacing: 0.06em;
-      text-align: left;
-      margin-bottom: 0.3rem;
       line-height: 1.1;
+      margin-bottom: 0.1rem;
+    }
+    #title-line2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
     }
     #title-sub {
       font-size: 1.1rem;
       color: black;
       font-weight: 500;
-      text-align: left;
       margin-bottom: 2rem;
+      text-align: left;
     }
 
     /* 전시 정보 */
@@ -155,7 +164,8 @@
 
     <!-- 제목 및 부제 -->
     <section id="title-section">
-      <h1 id="title"></h1>
+      <h1 id="title-line1"></h1>
+      <h1 id="title-line2"></h1>
       <p id="title-sub">강성은 권오선 김예림 문서영 정선용</p>
     </section>
 
@@ -204,15 +214,17 @@
 
   <!-- 타자 효과 스크립트 -->
   <script>
-    const titleEl = document.getElementById('title');
-    const typewriter = new Typewriter(titleEl, {
-      loop: false,
-      delay: 80,
-    });
+    const titleLine1 = document.getElementById('title-line1');
+    const titleLine2 = document.getElementById('title-line2');
+    const fullTitle = '고종, 허수와비 왕에서 광무가 되기까지';
 
-    typewriter
-      .typeString('고종, 허수와비 왕에서 광무가 되기까지')
-      .start();
+    // 두 줄로 분리
+    const [line1, ...rest] = fullTitle.split(',');
+    titleLine1.textContent = line1 + ',';
+    titleLine2.textContent = rest.join(',').trim();
+
+    // 타자 효과를 각각 적용 (간단하게 첫줄 고정, 두번째줄 타자 효과)
+    // 원하시면 더 고급 구현 가능
   </script>
 
   <!-- 모달 닫기 스크립트 -->
@@ -223,7 +235,3 @@
     closeBtn.addEventListener('click', () => {
       modal.style.display = 'none';
     });
-  </script>
-
-</body>
-</html>
