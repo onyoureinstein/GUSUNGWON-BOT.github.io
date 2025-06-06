@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>고종, 시간 위에 서다</title>
 
   <!-- Noto Sans KR -->
@@ -16,41 +16,117 @@
 
   <style>
     body {
+      margin: 0;
       background-image: url('assets/gojongback.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      background-repeat: no-repeat;
       font-family: 'Noto Sans KR', sans-serif;
+      color: black;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+      position: relative;
     }
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1.8s ease-in-out forwards;
+    /* 어둡고 투명한 오버레이 */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.55);
+      z-index: 0;
     }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 720px;
+      width: 100%;
+      color: #eee;
+    }
+    .project-label {
+      font-weight: 500;
+      font-size: 0.875rem;
+      opacity: 0.7;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: #fff;
+      min-height: 3.6rem;
+    }
+    p.description {
+      font-weight: 300;
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #ddd;
+      line-height: 1.5;
+    }
+    dl {
+      display: grid;
+      grid-template-columns: 4rem 1fr;
+      gap: 0.4rem 1rem;
+      font-weight: 300;
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 4rem;
+    }
+    dt {
+      font-weight: 500;
+      color: #aaa;
+      text-align: right;
+      user-select: none;
+    }
+    dd {
+      margin: 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #999;
+      user-select: none;
+    }
+    /* 타자 효과 텍스트 스타일 */
+    #title {
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-black">
+<body>
+  <div class="overlay"></div>
 
-  <!-- 오버레이 -->
-  <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+  <main>
+    <div class="project-label">ㅇㅇ 프로젝트</div>
+    <h1 id="title"></h1>
+    <p class="description">제국의 기억, 그리고 오늘을 비추다</p>
 
-  <!-- 콘텐츠 -->
-  <main class="relative z-10 max-w-4xl w-full">
-    <!-- 제목 (타자 효과) -->
-    <section class="text-center text-white mt-10">
-      <h1 id="title" class="text-5xl font-bold mb-6 h-[3rem]"></h1>
-      <p class="text-lg text-gray-300">제국의 기억, 그리고 오늘을 비추다</p>
-    </section>
+    <dl>
+      <dt>전시명</dt><dd>고종, 시간 위에 서다</dd>
+      <dt>기간</dt><dd>2025년 7월 1일 ~ 7월 14일</dd>
+      <dt>장소</dt><dd>덕수궁 석조전 특별관</dd>
+      <dt>관람시간</dt><dd>오전 10시 ~ 오후 6시 (월요일 휴관)</dd>
+      <dt>입장료</dt><dd>무료</dd>
+    </dl>
 
-    <!-- 푸터 -->
-    <footer class="text-center text-white text-sm py-8 mt-20">
-      &copy; 2025 고종 전시 기획단
-    </footer>
+    <p class="description" style="font-weight: 400; color: #ccc;">
+      본 전시는 대한제국의 마지막 황제, 고종의 생애를 조명하며<br/>
+      근대와 제국, 식민의 경계에서 우리가 잊고 있던 역사적 진실을 되짚습니다.<br/>
+      ‘고종’이라는 인물을 통해 역사 속 인간 군상의 운명과<br/>
+      제국의 종말이 개인의 삶에 어떻게 각인되었는지를 성찰합니다.
+    </p>
+
+    <footer>&copy; 2025 고종 전시 기획단</footer>
   </main>
 
   <!-- Dialogflow Chatbot -->
