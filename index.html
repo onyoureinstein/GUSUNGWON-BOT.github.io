@@ -1,110 +1,96 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>고종, 허수와비 왕에서 광무가 되기까지</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>전시 기획안</title>
+<style>
+  /* 전체 페이지 기본 스타일 */
+  body {
+    font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 40px auto 80px auto;
+    padding: 0 20px;
+  }
 
-  <!-- Noto Sans KR -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet" />
+  /* 제목 스타일 */
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #222;
+    margin-bottom: 40px;
+    text-align: left;
+    border-bottom: 3px solid #888;
+    padding-bottom: 12px;
+  }
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  /* 섹션 구분 */
+  section {
+    margin-bottom: 50px;
+  }
 
-  <!-- Typewriter JS -->
-  <script src="https://unpkg.com/typewriter-effect@2.18.0/dist/core.js"></script>
+  /* 소제목 스타일 */
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 16px;
+    border-left: 5px solid #a67c00; /* 예술적 느낌의 컬러 */
+    padding-left: 12px;
+  }
 
-  <style>
-    body {
-      background-image: url('assets/gojongback.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1.8s ease-in-out forwards;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
+  /* 본문 텍스트 스타일 */
+  p {
+    font-size: 1.125rem;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  /* 기획의도, 전시내용 텍스트를 길게 써도 편안하게 */
+  p + p {
+    margin-top: 16px;
+  }
+
+  /* 가벼운 강조 효과 - 문단 첫 글자 강조 */
+  p::first-letter {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #a67c00;
+    float: left;
+    line-height: 1;
+    padding-right: 6px;
+    font-family: 'Georgia', serif;
+  }
+
+</style>
 </head>
-<body class="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-black relative">
+<body>
 
-  <!-- 모달 팝업 -->
-  <div id="welcome-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-    <div class="bg-white rounded-lg p-6 max-w-sm text-center shadow-lg">
-      <p class="mb-4 text-gray-800 text-lg font-medium">
-        하단 봇을 활용하면 고종과 대화할 수 있습니다.
-      </p>
-      <button id="modal-close-btn" class="bg-black-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-        확인
-      </button>
-    </div>
-  </div>
+<h1>전시 기획안</h1>
 
-  <!-- 콘텐츠 -->
-  <main class="relative z-10 max-w-4xl w-full">
-    <!-- 세종대학교 문화원형 프로젝트 텍스트 -->
-    <section class="text-center text-black text-sm mb-4">
-      세종대학교 스토리텔링 문화원형 프로젝트
-    </section>
+<section id="planning-intent">
+  <h2>기획의도</h2>
+  <p>
+    여기 기획의도를 길게 써주세요. 전시의 주제와 의미, 작품을 통해 전달하고자 하는 메시지를 충분히 상세하게 적어주시면 됩니다.
+  </p>
+  <p>
+    긴 글이라도 가독성이 유지될 수 있도록 적당한 여백과 문단 구성을 신경 써 주세요.
+  </p>
+</section>
 
-    <!-- 제목 (타자 효과) -->
-    <section class="text-center mt-10 mb-6">
-      <h1 id="title" class="text-5xl font-bold mb-2 h-[3rem]"></h1>
-      <p class="text-lg text-gray-700">강성은 권오선 김예림 문서영 정선용</p>
-    </section>
+<section id="exhibition-content">
+  <h2>전시 내용</h2>
+  <p>
+    전시 내용 역시 길게 작성해도 자연스럽고 편안하게 읽힐 수 있게 배치하였습니다. 작품별 설명, 전시 구성, 공간 연출 방식 등 상세 내용을 여기에 작성하시면 됩니다.
+  </p>
+  <p>
+    문단마다 약간의 간격을 두어 집중도와 리듬감을 살렸습니다.
+  </p>
+</section>
 
-    <!-- 전시 정보 (제목 아래) -->
-    <section class="text-black text-center space-y-2 mb-10">
-      <div><strong>전시 장소:</strong> 세종대</div>
-      <div><strong>전시 날짜:</strong> 2025년 6월 10일 ~ 6월 13일</div>
-      <div><strong>전시 시간:</strong> 10:00 AM - 5:00 PM</div>
-      <div><strong>전시 기획 의도:</strong> 역사와 현대를 잇는 시각적 탐구</div>
-      <div><strong>전시 내용:</strong> 고종 시대의 시간과 기억을 재조명하는 미디어 아트 전시</div>
-    </section>
-
-    <!-- 푸터 -->
-    <footer class="text-center text-black text-sm py-8 mt-20">
-      &copy; 2025 세종대학교 스토리텔링 과제 그룹-2
-    </footer>
-  </main>
-
-  <!-- Dialogflow Chatbot -->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  <df-messenger
-    chat-title="고종과 대화하기"
-    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
-    language-code="ko">
-  </df-messenger>
-
-  <!-- 타자 효과 스크립트 -->
-  <script>
-    const titleEl = document.getElementById('title');
-    const typewriter = new Typewriter(titleEl, {
-      loop: false,
-      delay: 80,
-    });
-
-    typewriter
-      .typeString('고종, 허수와비 왕에서 광무가 되기까지')
-      .start();
-  </script>
-
-  <!-- 모달 닫기 스크립트 -->
-  <script>
-    const modal = document.getElementById('welcome-modal');
-    const closeBtn = document.getElementById('modal-close-btn');
-
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-  </script>
 </body>
 </html>
