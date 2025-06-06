@@ -1,247 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>명성황후 : 고궁연애록</title>
-  <link rel="icon" href="assets/연화첩.ico" type="image/x-icon">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>고종, 시간 위에 서다</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @font-face {
-      font-family: 'GapyeongHanseokbongB';
-      src: url('assets/fonts/GapyeongHanseokbongB.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-family: 'GapyeongHanseokbongL';
-      src: url('assets/fonts/GapyeongHanseokbongL.ttf') format('truetype');
-    }
-
     body {
-      margin: 0;
-      font-family: 'GapyeongHanseokbongL', serif;
-      background: url('assets/background.jpg') no-repeat center center / cover;
-      color: #f5f0e1;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
-
-    nav.navbar {
-      background-color: rgba(60, 40, 30, 0.85);
-    }
-
-    nav .navbar-brand {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 22px;
-      color: #e0d3b8;
-    }
-
-    #intro-section {
-      padding: 80px 20px 50px 20px;
-      text-align: center;
-      background: rgba(30, 20, 15, 0.7);
-    }
-
-    #intro-section h1 {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 50px;
-      margin-bottom: 10px;
-      color: #f2e6c2;
-      animation: fadeScaleIn 1.2s ease forwards;
-    }
-
-    #intro-section p.subtitle {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    #intro-section p.author {
-      font-size: 15px;
-      color: #d9c8b4;
-      font-style: italic;
-    }
-
-    #chatbot-section {
-      text-align: center;
-      padding: 60px 20px;
-      background: rgba(50, 30, 25, 0.75);
-    }
-
-    #chatbot-section h2 {
-      font-family: 'GapyeongHanseokbongB', serif;
-      font-size: 32px;
-      margin-bottom: 25px;
-      color: #f3e3d0;
-    }
-
-    iframe {
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      animation: floatShadow 4s ease-in-out infinite;
-    }
-
-    #fun-section {
-      padding: 40px 20px;
-      text-align: center;
-      background: rgba(20, 10, 10, 0.6);
-    }
-
-    #quote-box {
-      font-size: 18px;
-      color: #edd9aa;
-      margin-top: 20px;
-      font-style: italic;
-    }
-
-    .btn-quote {
-      background-color: #6c4b3a;
-      color: #fff5e9;
-      font-weight: bold;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      cursor: pointer;
-    }
-
-    .btn-quote:hover {
-      background-color: #8a6450;
-    }
-
-    .btn-quote:active {
-      animation: shake 0.4s ease;
-    }
-
-    footer {
-      font-size: 12px;
-      color: #ccc;
-      text-align: center;
-      padding: 15px;
-      background-color: rgba(0,0,0,0.7);
-    }
-
-    @media (max-width: 600px) {
-      #intro-section h1 {
-        font-size: 36px;
-      }
-      iframe {
-        width: 90%;
-        height: 430px;
-      }
-    }
-
-    /* 애니메이션 키프레임 */
-    @keyframes fadeScaleIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes floatShadow {
-      0%, 100% {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        transform: translateY(0);
-      }
-      50% {
-        box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-        transform: translateY(-6px);
-      }
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-5px); }
-      40%, 80% { transform: translateX(5px); }
-    }
-
-    /* Dialogflow Messenger 갈색톤 스타일 */
-    df-messenger {
-      --df-messenger-bot-message-background-color: #7B4B3A; /* 진한 브라운 */
-      --df-messenger-bot-message-font-color: #F5EBDD;      /* 크림빛 연한색 */
-      --df-messenger-user-message-background-color: #A6785A; /* 연한 브라운 */
-      --df-messenger-user-message-font-color: #FFFFFF;      /* 흰색 */
-      --df-messenger-chat-background-color: rgba(60, 40, 30, 0.95); /* 어두운 갈색 배경 */
-      --df-messenger-button-background-color: #7B4B3A;     /* 버튼 색상 */
-      --df-messenger-button-hover-background-color: #A6785A; /* 버튼 호버 색상 */
-      --df-messenger-font-family: 'GapyeongHanseokbongL', serif;
+    .bg-overlay {
+      background-color: rgba(0, 0, 0, 0.7);
     }
   </style>
 </head>
+<body class="text-white font-serif">
+  <div class="bg-overlay min-h-screen">
+    <header class="py-10 text-center border-b border-gray-600">
+      <h1 class="text-4xl font-bold tracking-wide">고종, 시간 위에 서다</h1>
+      <p class="mt-2 text-lg text-gray-300">제국의 기억, 그리고 오늘을 비추다</p>
+    </header>
 
-<body>
-  <nav class="navbar navbar-dark">
-    <div class="container">
-      <span class="navbar-brand">세종대학교 문화원형 프로젝트</span>
-    </div>
-  </nav>
+    <main class="max-w-3xl mx-auto px-6 py-12 space-y-16">
+      <section>
+        <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">전시 소개</h2>
+        <p class="leading-relaxed text-gray-200">
+          본 전시는 대한제국의 마지막 황제, 고종의 생애를 조명하며<br>
+          근대와 제국, 식민의 경계에서 우리가 잊고 있던 역사적 진실을 되짚습니다.<br>
+          사진, 문서, 영상 등 다양한 매체로 고종의 시대를 재현합니다.
+        </p>
+      </section>
 
-  <section id="intro-section">
-    <h1>명성황후 : 고궁연애록</h1>
-    <p class="subtitle">"궁궐 안 사랑, 그리고 비극. 명성황후의 흔적을 따라가는 감각적 체험 행사"</p>
-    <p class="author">기획 │ 강성은 · 권오선 · 김예림 · 문서영 · 정선용</p>
+      <section>
+        <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">전시 정보</h2>
+        <ul class="text-gray-300 space-y-2 leading-relaxed">
+          <li><strong>기간:</strong> 2025년 7월 1일 ~ 7월 14일</li>
+          <li><strong>장소:</strong> 덕수궁 석조전 특별관</li>
+          <li><strong>관람 시간:</strong> 오전 10시 ~ 오후 6시 (매주 월요일 휴관)</li>
+          <li><strong>입장료:</strong> 무료</li>
+        </ul>
+      </section>
 
-    <div style="margin-top: 25px; font-size: 16px; line-height: 1.7; max-width: 720px; margin-left: auto; margin-right: auto;">
-      이 사이트는 세종대학교 문화원형 프로젝트의 일환으로 기획된 <strong>명성황후 인터랙티브 체험 웹페이지</strong>입니다.  
-      고궁 배경과 함께 명성황후의 이야기를 감각적으로 느끼고, 관객이 직접 체험할 수 있는 온라인 공간을 목표로 제작 중입니다.
-      
-      <br><br>
-      <em>※ 현재 사이트는 기획·개발 중이며, 아래 링크에서 실제 체험형 버전을 미리 볼 수 있습니다.</em>
-      <br>
-      👉 <a href="https://poomang.com/preview/8dl183" target="_blank" style="color: #f8d9b2; text-decoration: underline;">https://poomang.com/preview/8dl183</a>
-    </div>
-  </section>
+      <section>
+        <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">기획 의도</h2>
+        <p class="text-gray-200 leading-relaxed">
+          '고종'이라는 인물을 통해 역사 속 인간 군상의 운명과<br>
+          제국의 종말이 개인의 삶에 어떻게 각인되었는지를 성찰합니다.<br>
+          이는 과거를 복원하려는 시도가 아닌, 현재를 이해하기 위한 질문입니다.
+        </p>
+      </section>
 
-  <!-- 오늘의 궁중 명언 섹션 -->
-  <section id="fun-section">
-    <h2>오늘의 궁중 명언</h2>
-    <button class="btn-quote" onclick="showRandomQuote()">🍵 인연의 말씀 듣기</button>
-    <div id="quote-box"></div>
-  </section>
+      <section>
+        <h2 class="text-2xl font-semibold mb-4 border-b border-gray-600 pb-2">문의</h2>
+        <p class="text-gray-300">이메일: contact@kojong-exhibition.kr</p>
+        <p class="text-gray-300">인스타그램: @kojong2025</p>
+      </section>
+    </main>
 
-  <!-- 명성황후와 대화 섹션 -->
-  <section id="chatbot-section">
-  <h2>명성황후와 대화해보기</h2>
-  <p style="margin-top: 8px; font-size: 14px; color: #d9c8b4;">
-    하단의 봇을 클릭하면 명성황후와 대화할 수 있습니다.
-  </p>
-</section>
+    <footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-600">
+      &copy; 2025 고종 전시 기획단. All rights reserved.
+    </footer>
+  </div>
 
-
-  <footer>
-    version 2025.05.21
-  </footer>
-
-  <script>
-    const quotes = [
-      "“비단은 찢어져도 그 무늬를 잃지 않는다.”",
-      "“나는 황후가 아니라 한 인간으로 기억되길 바랍니다.”",
-      "“인연은 기다림보다, 기억 속에서 더 깊게 피어난다.”",
-      "“궁궐은 크나, 마음 둘 곳은 적었다.”",
-      "“그리움은 시간보다 더 오래 남는다.”",
-      "“아름다움은 권력보다 오래간다.”"
-    ];
-
-    function showRandomQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quote-box').innerText = quotes[randomIndex];
-    }
-  </script>
-
-  <!-- Dialogflow Messenger 삽입 -->
+  <!-- ✅ Dialogflow Chatbot 삽입 -->
   <df-messenger
-    chat-title="명성황후"
-    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
-    language-code="ko"
-  ></df-messenger>
-
+    intent="WELCOME"
+    chat-title="고종전시봇"
+    agent-id="your-agent-id"
+    language-code="ko">
+  </df-messenger>
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </body>
 </html>
