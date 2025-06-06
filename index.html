@@ -1,96 +1,229 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>전시 기획안</title>
-<style>
-  /* 전체 페이지 기본 스타일 */
-  body {
-    font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
-    color: #333;
-    line-height: 1.6;
-    max-width: 900px;
-    margin: 40px auto 80px auto;
-    padding: 0 20px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고종, 허수와비 왕에서 광무가 되기까지</title>
 
-  /* 제목 스타일 */
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #222;
-    margin-bottom: 40px;
-    text-align: left;
-    border-bottom: 3px solid #888;
-    padding-bottom: 12px;
-  }
+  <!-- Noto Sans KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet" />
 
-  /* 섹션 구분 */
-  section {
-    margin-bottom: 50px;
-  }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  /* 소제목 스타일 */
-  h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 16px;
-    border-left: 5px solid #a67c00; /* 예술적 느낌의 컬러 */
-    padding-left: 12px;
-  }
+  <!-- Typewriter JS -->
+  <script src="https://unpkg.com/typewriter-effect@2.18.0/dist/core.js"></script>
 
-  /* 본문 텍스트 스타일 */
-  p {
-    font-size: 1.125rem;
-    color: #444;
-    text-align: justify;
-    text-justify: inter-word;
-  }
+  <style>
+    body {
+      background-image: url('assets/gojongback.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: black;
+      margin: 0;
+      min-height: 100vh;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
 
-  /* 기획의도, 전시내용 텍스트를 길게 써도 편안하게 */
-  p + p {
-    margin-top: 16px;
-  }
+    /* 팝업 배경은 살리고, 내부는 흰색, 버튼은 검정 */
+    #welcome-modal {
+      background-color: rgba(0,0,0,0.7);
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+    }
+    #welcome-modal > div {
+      background: transparent;
+      padding: 1.5rem;
+      max-width: 360px;
+      text-align: center;
+      color: black;
+      font-weight: 500;
+      /* 배경 박스 대신 글씨에 그림자 줘서 가독성 확보 */
+      text-shadow: 0 0 5px rgba(255,255,255,0.9);
+    }
+    #modal-close-btn {
+      background-color: black;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    #modal-close-btn:hover {
+      background-color: #222;
+    }
 
-  /* 가벼운 강조 효과 - 문단 첫 글자 강조 */
-  p::first-letter {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #a67c00;
-    float: left;
-    line-height: 1;
-    padding-right: 6px;
-    font-family: 'Georgia', serif;
-  }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-</style>
+    /* 제목과 텍스트 왼쪽 정렬, 좀 더 예술적이고 실험적인 레이아웃을 위해 폰트 크기 조절과 간격 조절 */
+    #title-section {
+      margin-bottom: 3rem;
+    }
+    #title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-align: left;
+      margin-bottom: 0.3rem;
+      line-height: 1.1;
+    }
+    #title-sub {
+      font-size: 1.1rem;
+      color: black;
+      font-weight: 500;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    /* 전시 정보 */
+    #exhibition-info {
+      text-align: left;
+      margin-bottom: 4rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    #exhibition-info > div {
+      margin-bottom: 0.5rem;
+    }
+    #exhibition-info strong {
+      font-weight: 700;
+    }
+
+    /* 섹션 스타일 */
+    section {
+      margin-bottom: 5rem;
+      text-align: left;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      border-left: 5px solid black;
+      padding-left: 10px;
+      margin-top: 0;
+      color: black;
+    }
+    section p {
+      font-size: 1.125rem;
+      color: black;
+      margin-top: 0.8rem;
+      white-space: pre-wrap; /* 줄바꿈 유지 */
+    }
+
+    /* 푸터 */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: black;
+      margin-top: 6rem;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
 
-<h1>전시 기획안</h1>
+  <!-- 모달 팝업 -->
+  <div id="welcome-modal">
+    <div>
+      <p>하단 봇을 활용하면 고종과 대화할 수 있습니다.</p>
+      <button id="modal-close-btn">확인</button>
+    </div>
+  </div>
 
-<section id="planning-intent">
-  <h2>기획의도</h2>
-  <p>
-    여기 기획의도를 길게 써주세요. 전시의 주제와 의미, 작품을 통해 전달하고자 하는 메시지를 충분히 상세하게 적어주시면 됩니다.
-  </p>
-  <p>
-    긴 글이라도 가독성이 유지될 수 있도록 적당한 여백과 문단 구성을 신경 써 주세요.
-  </p>
-</section>
+  <main>
+    <!-- 세종대학교 문화원형 프로젝트 텍스트 -->
+    <section class="text-sm mb-6" style="font-weight: 500;">
+      세종대학교 스토리텔링 문화원형 프로젝트
+    </section>
 
-<section id="exhibition-content">
-  <h2>전시 내용</h2>
-  <p>
-    전시 내용 역시 길게 작성해도 자연스럽고 편안하게 읽힐 수 있게 배치하였습니다. 작품별 설명, 전시 구성, 공간 연출 방식 등 상세 내용을 여기에 작성하시면 됩니다.
-  </p>
-  <p>
-    문단마다 약간의 간격을 두어 집중도와 리듬감을 살렸습니다.
-  </p>
-</section>
+    <!-- 제목 및 부제 -->
+    <section id="title-section">
+      <h1 id="title"></h1>
+      <p id="title-sub">강성은 권오선 김예림 문서영 정선용</p>
+    </section>
+
+    <!-- 전시 정보 -->
+    <section id="exhibition-info">
+      <div><strong>전시 장소:</strong> 세종대</div>
+      <div><strong>전시 날짜:</strong> 2025년 6월 10일 ~ 6월 13일</div>
+      <div><strong>전시 시간:</strong> 10:00 AM - 5:00 PM</div>
+    </section>
+
+    <!-- 기획의도 섹션 -->
+    <section id="planning-intent">
+      <h2>기획의도</h2>
+      <p>
+        여기 기획의도를 길게 써주세요. 전시의 주제와 의미, 작품을 통해 전달하고자 하는 메시지를 충분히 상세하게 적어주시면 됩니다.
+      </p>
+      <p>
+        긴 글이라도 가독성이 유지될 수 있도록 적당한 여백과 문단 구성을 신경 써 주세요.
+      </p>
+    </section>
+
+    <!-- 전시내용 섹션 -->
+    <section id="exhibition-content">
+      <h2>전시 내용</h2>
+      <p>
+        전시 내용 역시 길게 작성해도 자연스럽고 편안하게 읽힐 수 있게 배치하였습니다. 작품별 설명, 전시 구성, 공간 연출 방식 등 상세 내용을 여기에 작성하시면 됩니다.
+      </p>
+      <p>
+        문단마다 약간의 간격을 두어 집중도와 리듬감을 살렸습니다.
+      </p>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+      &copy; 2025 세종대학교 스토리텔링 과제 그룹-2
+    </footer>
+  </main>
+
+  <!-- Dialogflow Chatbot -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    chat-title="고종과 대화하기"
+    agent-id="77410fb8-8bb2-462c-b35c-2bc98ebfa463"
+    language-code="ko">
+  </df-messenger>
+
+  <!-- 타자 효과 스크립트 -->
+  <script>
+    const titleEl = document.getElementById('title');
+    const typewriter = new Typewriter(titleEl, {
+      loop: false,
+      delay: 80,
+    });
+
+    typewriter
+      .typeString('고종, 허수와비 왕에서 광무가 되기까지')
+      .start();
+  </script>
+
+  <!-- 모달 닫기 스크립트 -->
+  <script>
+    const modal = document.getElementById('welcome-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>
