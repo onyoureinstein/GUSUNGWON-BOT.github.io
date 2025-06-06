@@ -16,19 +16,17 @@
 
   <style>
     body {
-      background-image: url('background.jpg');
+      background-image: url('assets/gojongback.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
       font-family: 'Noto Sans KR', sans-serif;
     }
-
     .fade-in {
       opacity: 0;
       animation: fadeIn 1.8s ease-in-out forwards;
     }
-
     @keyframes fadeIn {
       to {
         opacity: 1;
@@ -38,50 +36,19 @@
 </head>
 <body class="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-black">
 
-  <!-- 오버레이 (어둡게 처리) -->
+  <!-- 오버레이 -->
   <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
 
   <!-- 콘텐츠 -->
-  <main class="relative z-10 max-w-4xl w-full space-y-24">
-
+  <main class="relative z-10 max-w-4xl w-full">
     <!-- 제목 (타자 효과) -->
     <section class="text-center text-white mt-10">
       <h1 id="title" class="text-5xl font-bold mb-6 h-[3rem]"></h1>
       <p class="text-lg text-gray-300">제국의 기억, 그리고 오늘을 비추다</p>
     </section>
 
-    <!-- 전시 소개 -->
-    <section class="fade-in bg-white bg-opacity-90 backdrop-blur-md rounded-xl p-10 shadow-2xl space-y-4">
-      <h2 class="text-2xl font-semibold">전시 소개</h2>
-      <p class="leading-relaxed text-gray-800">
-        본 전시는 대한제국의 마지막 황제, 고종의 생애를 조명하며<br>
-        근대와 제국, 식민의 경계에서 우리가 잊고 있던 역사적 진실을 되짚습니다.
-      </p>
-    </section>
-
-    <!-- 전시 정보 -->
-    <section class="fade-in bg-white bg-opacity-90 backdrop-blur-md rounded-xl p-10 shadow-2xl space-y-4">
-      <h2 class="text-2xl font-semibold">전시 정보</h2>
-      <ul class="list-disc list-inside text-gray-800 space-y-1">
-        <li><strong>기간:</strong> 2025년 7월 1일 ~ 7월 14일</li>
-        <li><strong>장소:</strong> 덕수궁 석조전 특별관</li>
-        <li><strong>관람 시간:</strong> 오전 10시 ~ 오후 6시 (월요일 휴관)</li>
-        <li><strong>입장료:</strong> 무료</li>
-      </ul>
-    </section>
-
-    <!-- 기획 의도 -->
-    <section class="fade-in bg-white bg-opacity-90 backdrop-blur-md rounded-xl p-10 shadow-2xl space-y-4">
-      <h2 class="text-2xl font-semibold">기획 의도</h2>
-      <p class="text-gray-800 leading-relaxed">
-        ‘고종’이라는 인물을 통해 역사 속 인간 군상의 운명과<br>
-        제국의 종말이 개인의 삶에 어떻게 각인되었는지를 성찰합니다.<br>
-        이는 과거를 복원하려는 시도가 아닌, 현재를 이해하기 위한 질문입니다.
-      </p>
-    </section>
-
     <!-- 푸터 -->
-    <footer class="text-center text-white text-sm py-8">
+    <footer class="text-center text-white text-sm py-8 mt-20">
       &copy; 2025 고종 전시 기획단
     </footer>
   </main>
