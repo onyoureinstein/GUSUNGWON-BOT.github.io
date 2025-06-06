@@ -34,23 +34,35 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-white relative">
+<body class="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-black relative">
+
+  <!-- 모달 팝업 -->
+  <div id="welcome-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+    <div class="bg-white rounded-lg p-6 max-w-sm text-center shadow-lg">
+      <p class="mb-4 text-gray-800 text-lg font-medium">
+        하단 봇을 활용하면 고종과 대화할 수 있습니다.
+      </p>
+      <button id="modal-close-btn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+        확인
+      </button>
+    </div>
+  </div>
 
   <!-- 콘텐츠 -->
   <main class="relative z-10 max-w-4xl w-full">
     <!-- 세종대학교 문화원형 프로젝트 텍스트 -->
-    <section class="text-center text-white text-sm mb-4">
+    <section class="text-center text-black text-sm mb-4">
       세종대학교 문화원형 프로젝트
     </section>
 
     <!-- 제목 (타자 효과) -->
     <section class="text-center mt-10 mb-6">
       <h1 id="title" class="text-5xl font-bold mb-2 h-[3rem]"></h1>
-      <p class="text-lg text-gray-300">제국의 기억, 그리고 오늘을 비추다</p>
+      <p class="text-lg text-gray-700">제국의 기억, 그리고 오늘을 비추다</p>
     </section>
 
     <!-- 전시 정보 (제목 아래) -->
-    <section class="text-white text-center space-y-2 mb-10">
+    <section class="text-black text-center space-y-2 mb-10">
       <div><strong>전시 장소:</strong> 세종대학교 문화원</div>
       <div><strong>전시 날짜:</strong> 2025년 7월 10일 ~ 7월 20일</div>
       <div><strong>전시 시간:</strong> 10:00 AM - 6:00 PM</div>
@@ -59,7 +71,7 @@
     </section>
 
     <!-- 푸터 -->
-    <footer class="text-center text-white text-sm py-8 mt-20">
+    <footer class="text-center text-black text-sm py-8 mt-20">
       &copy; 2025 고종 전시 기획단
     </footer>
   </main>
@@ -83,6 +95,16 @@
     typewriter
       .typeString('고종, 시간 위에 서다')
       .start();
+  </script>
+
+  <!-- 모달 닫기 스크립트 -->
+  <script>
+    const modal = document.getElementById('welcome-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
   </script>
 </body>
 </html>
